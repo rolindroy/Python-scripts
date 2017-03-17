@@ -9,8 +9,8 @@ root_dir = "/webadmin/"
 
 class PullRequest(Resource):
     def get(self, resource_id):
-        dest_name = root_dir + resource_id
-        repo = git.Repo(dest_name)
+        dest_path = root_dir + resource_id
+        repo = git.Repo(dest_path)
         repo_data = repo.remotes.origin
         sync = repo_data.pull();
         return {'Message': 'Done'}

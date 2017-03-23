@@ -10,7 +10,7 @@
 - name: DevOps QA Env-Setup
   hosts: dynamically_created_hosts
   sudo: yes
-  user: rolind
+  user: ubuntu
   pre_tasks:
     - name: Updating apt-cache for Java Open JDK 8.
       apt: update_cache=yes

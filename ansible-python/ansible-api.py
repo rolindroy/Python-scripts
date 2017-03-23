@@ -10,7 +10,6 @@ from ansible.executor.playbook_executor import PlaybookExecutor
 
 from flask import Flask, request
 from flask_restful import Resource, Api
-import git
 
 app = Flask(__name__)
 api = Api(app)

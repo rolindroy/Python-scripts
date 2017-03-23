@@ -1,0 +1,25 @@
+---
+
+- hosts: localhost
+  gather_facts: no
+  tasks:
+    - add_host:
+        name: "{{ target_host }}"
+        groups: dynamically_created_hosts
+
+- name: DevOps QA Env-Setup
+  hosts: dynamically_created_hosts
+  sudo: yes
+  user: rolind
+  pre_tasks:
+    - name: Updating apt-cache for Java Open JDK 8.
+      apt: update_cache=yes
+      register: apt_output
+    - debug: var=apt_output
+
+    - name: Installing Curl and wget
+      apt: pkg={{ item }} state=latest
+      with_items:
+        - git
+      register: output
+    - debug: var=output

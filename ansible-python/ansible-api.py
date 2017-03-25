@@ -33,7 +33,7 @@ class PullRequest(Resource):
 
         passwords = {}
 
-        pbex = PlaybookExecutor(playbooks=[playbook_path], inventory=inventory, variable_manager=variable_manager, loader=loader, options=options, passwords=passwords, verbosity=3)
+        pbex = PlaybookExecutor(playbooks=[playbook_path], inventory=inventory, variable_manager=variable_manager, loader=loader, options=options, passwords=passwords)
 
         results = pbex.run()
 

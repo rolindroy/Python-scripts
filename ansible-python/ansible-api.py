@@ -34,7 +34,8 @@ class PullRequest(Resource):
         passwords = {}
 
         pbex = PlaybookExecutor(playbooks=[playbook_path], inventory=inventory, variable_manager=variable_manager, loader=loader, options=options, passwords=passwords)
-
+        f = open('test.txt', 'w')
+        f.write("%s", pbex)
         results = pbex.run()
 
         return {'Result': results}

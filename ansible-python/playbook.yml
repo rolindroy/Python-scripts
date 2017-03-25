@@ -17,14 +17,14 @@
     - name: 'install python2'
       raw: sudo apt-get -y install python-simplejson
 
-    # - name: Updating apt-cache for Java Open JDK 8.
-    #   apt: update_cache=yes
-    #   register: apt_output
-    # - debug: var=apt_output
-    #
-    # - name: Installing Curl and wget
-    #   apt: pkg={{ item }} state=latest
-    #   with_items:
-    #     - git
-    #   register: output
-    # - debug: var=output
+    - name: Updating apt-cache for Java Open JDK 8.
+      apt: update_cache=yes
+      register: apt_output
+    - debug: var=apt_output
+
+    - name: Installing Curl and wget
+      apt: pkg={{ item }} state=latest
+      with_items:
+        - git
+      register: output
+    - debug: var=output

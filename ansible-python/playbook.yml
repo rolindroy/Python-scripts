@@ -11,13 +11,13 @@
   gather_facts: no
   hosts: dynamically_created_hosts
   sudo: yes
-  user: rolind
+  user: ubuntu  #username
   pre_tasks:
 
     - name: 'install python2'
       raw: sudo apt-get -y install python-simplejson
 
-    - name: Updating apt-cache for Java Open JDK 8.
+    - name: Updating apt-cache8.
       apt: update_cache=yes
       register: apt_output
     - debug: var=apt_output   #write

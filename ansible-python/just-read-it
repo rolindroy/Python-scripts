@@ -1,0 +1,12 @@
+Ansible Python
+
+sudo apt install python-pip
+export LC_ALL=C
+pip install --upgrade pip
+sudo iptables -A INPUT -p tcp -m tcp --dport 5000 -j ACCEPT
+eval `ssh-agent -s`
+ssh-add <Private Key Here>
+
+python -d ansible-api.py 
+
+## Fork the process

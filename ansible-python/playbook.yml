@@ -11,7 +11,7 @@
   gather_facts: no
   hosts: dynamically_created_hosts
   sudo: yes
-  user: ubuntu  #username
+#  user: ubuntu  #username
   pre_tasks:
 
     - name: 'install python2'

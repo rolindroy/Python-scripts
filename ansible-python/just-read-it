@@ -9,4 +9,5 @@ ssh-add <Private Key Here>
 
 python -d ansible-api.py 
 
-## Fork the process
+curl http://<ip_address>:<port>/<user_name>
+

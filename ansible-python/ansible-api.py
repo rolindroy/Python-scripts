@@ -15,7 +15,7 @@ app = Flask(__name__)
 api = Api(app)
 
 class PullRequest(Resource):
-    def get(self):
+    def get(self, user_name):
         variable_manager = VariableManager()
         loader = DataLoader()
 
@@ -27,7 +27,7 @@ class PullRequest(Resource):
             sys.exit()
 
         Options = namedtuple('Options', ['listtags', 'listtasks', 'listhosts', 'syntax', 'connection','module_path', 'forks', 'remote_user', 'private_key_file', 'ssh_common_args', 'ssh_extra_args', 'sftp_extra_args', 'scp_extra_args', 'become', 'become_method', 'become_user', 'verbosity', 'check'])
-        options = Options(listtags=False, listtasks=False, listhosts=False, syntax=False, connection='ssh', module_path=None, forks=100, remote_user='ubuntu', private_key_file=None, ssh_common_args=None, ssh_extra_args=None, sftp_extra_args=None, scp_extra_args=None, become=True, become_method=None, become_user='root', verbosity=4, check=False)
+        options = Options(listtags=False, listtasks=False, listhosts=False, syntax=False, connection='ssh', module_path=None, forks=100, remote_user=user_name, private_key_file=None, ssh_common_args=None, ssh_extra_args=None, sftp_extra_args=None, scp_extra_args=None, become=True, become_method=None, become_user='root', verbosity=4, check=False)
 
         variable_manager.extra_vars = {'target_host': request.remote_addr} # This can accomodate various other command line arguments.`
 
@@ -39,7 +39,7 @@ class PullRequest(Resource):
 
         return {'Result': results}
 
-api.add_resource(PullRequest, '/')
+api.add_resource(PullRequest, '/<string:user_name>')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
